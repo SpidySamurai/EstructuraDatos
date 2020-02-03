@@ -20,7 +20,7 @@ public class Cola {
         this.head = null;
         this.tail = null;
         this.numNodes = 0;
-        this.size=size;
+        this.size = size;
     }
 
     public Node getHead() {
@@ -46,64 +46,65 @@ public class Cola {
     public void setNumNodes(int numNodes) {
         this.numNodes = numNodes;
     }
-    
-    public void inQueue(int value){
-        Node aux = new Node(value);
-        
-        if(this.head != null){
-            this.head.setPrev(aux);
-            aux.setNext(this.head);
-//            this.head = aux;
-        }
-        this.head = aux;
-        if(this.tail == null){
-            this.tail = aux;
-        }
-        this.numNodes++;
-    }
-    
-//    public void addAtTail(int value) {
+
+//    public void inQueue(int value){
 //        Node aux = new Node(value);
-//
-//        if (this.tail != null) {
-//            this.tail.setNext(aux);
-//            aux.setPrev(this.tail);
-////            this.tail = aux;
-//        }
-//        this.tail = aux;
-//        if(this.head == null){
-//            this.head = aux;
-//        }
 //        
+//        if(this.head != null){
+//            this.head.setPrev(aux);
+//            aux.setNext(this.head);
+////            this.head = aux;
+//        }
+//        this.head = aux;
+//        if(this.tail == null){
+//            this.tail = aux;
+//        }
 //        this.numNodes++;
 //    }
-    
-    public int deQueue(){
-        int value;
-        Node temp = this.tail;      
-        value = temp.getValue();
-        
-        this.tail = temp.getPrev();
-        this.tail.setNext(null);
-        
-        return value;
-    }
-    
+    public void inQueue(int value) {
+        if (this.size != this.numNodes) {
+            Node aux = new Node(value);
 
-    public void printList() {
+            if (this.tail != null) {
+                this.tail.setNext(aux);
+                aux.setPrev(this.tail);
+//            this.tail = aux;
+            }
+            this.tail = aux;
+            if (this.head == null) {
+                this.head = aux;
+            }
+
+            this.numNodes++;
+        } else {
+            System.out.println("Tamaño excedido!!!");
+        }
+    }
+
+    public Node deQueue() {        
+//        int value;
+        if(numNodes != 0){
+            
+        Node temp = this.head;
+//        value = temp.getValue();
+
+        this.head = temp.getNext();
+        this.head.setPrev(null);
+        this.numNodes--;
+        return temp;
+    } else {
+            System.out.println("No hay elementos en la cola!!!");
+        }
+        return null;
+    }
+
+    public void printCola() {
         Node temp = this.head;
         System.out.println("Number of elements: " + this.numNodes);
         while (temp != null) {
-            System.out.print(temp.getValue()+" ");
+            System.out.print(temp.getValue() + " ");
             temp = temp.getNext();
         }
-        System.out.println(" ");
-        temp = this.tail;
-        while (temp != null) {
-            System.out.print(temp.getValue()+" ");
-            temp = temp.getPrev();
-        }
-        
     }
 
 }
