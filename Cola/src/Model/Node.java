@@ -7,12 +7,12 @@ package Model;
 public class Node {
     private Node next;
     private Node prev;
-    private int value;
+    private Object value;
 
-    public Node(int value) {
+    public Node(Object entry) {
         this.next = null;
         this.prev = null;
-        this.value = value;
+        this.value = entry;
     }
 
     public Node getNext() {
@@ -23,7 +23,7 @@ public class Node {
         return prev;
     }
 
-    public int getValue() {
+    public Object getValue() {
         return value;
     }
 

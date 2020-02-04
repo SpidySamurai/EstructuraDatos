@@ -5,6 +5,8 @@
  */
 package Model;
 
+import java.util.Scanner;
+
 /**
  *
  * @author A13003975
@@ -61,38 +63,45 @@ public class Cola {
 //        }
 //        this.numNodes++;
 //    }
-    public void inQueue(int value) {
-        if (this.size != this.numNodes) {
-            Node aux = new Node(value);
+    public void inQueue(Object entry) {
+//        if (this.size != this.numNodes) {
+        Node aux = new Node(entry);
 
-            if (this.tail != null) {
-                this.tail.setNext(aux);
-                aux.setPrev(this.tail);
+        if (this.tail != null) {
+            this.tail.setNext(aux);
+            aux.setPrev(this.tail);
 //            this.tail = aux;
-            }
-            this.tail = aux;
-            if (this.head == null) {
-                this.head = aux;
-            }
-
-            this.numNodes++;
-        } else {
-            System.out.println("Tamaño excedido!!!");
         }
+        this.tail = aux;
+        if (this.head == null) {
+            this.head = aux;
+        }
+
+        this.numNodes++;
+//        } else {
+//            System.out.println("Tamaño excedido!!!");
+//        }
     }
 
-    public Node deQueue() {        
+    public Node deQueue() {
 //        int value;
-        if(numNodes != 0){
-            
-        Node temp = this.head;
+        if (numNodes != 0) {
+            if (numNodes != 1) {
+                Node temp = this.head;
 //        value = temp.getValue();
 
-        this.head = temp.getNext();
-        this.head.setPrev(null);
-        this.numNodes--;
-        return temp;
-    } else {
+                this.head = temp.getNext();
+                this.head.setPrev(null);
+                this.numNodes--;
+                return temp;
+            } else {
+                Node temp = this.head;
+                this.setHead(null);
+                this.setTail(null);
+                this.numNodes--;
+                return temp;
+            }
+        } else {
             System.out.println("No hay elementos en la cola!!!");
         }
         return null;
@@ -100,11 +109,66 @@ public class Cola {
 
     public void printCola() {
         Node temp = this.head;
-        System.out.println("Number of elements: " + this.numNodes);
+        System.out.println("\nNumber of elements: " + this.numNodes);
         while (temp != null) {
             System.out.print(temp.getValue() + " ");
             temp = temp.getNext();
         }
+        System.out.println("\n\n\n");
     }
 
+    public void magicPotion() {
+        int m;
+        Scanner rd = new Scanner(System.in);
+        System.out.println("Ingrese la posicion a obtener");
+        m = rd.nextInt();
+        if (m <= this.size) {
+            m--;
+            Node temp = this.getHead();
+            for (int i = 0; i < m; i++) {
+                temp = temp.getNext();
+            }
+            System.out.println(temp.getValue());
+        } else {
+            Node temp;
+//            Object value = temp.getValue();
+
+            while (this.size < m) {
+                temp = this.deQueue();
+                Object value = temp.getValue();
+                this.inQueue(value);
+                this.inQueue(value);
+                this.size++;
+            }
+
+            System.out.println(this.getTail().getValue());
+        }
+    }
+
+    public void process(int n) {
+        Scanner rd = new Scanner(System.in);
+        Cola ideal = new Cola(n);
+        int orden;
+        int iteracion = 0;
+        System.out.println("Los procesos ingresados...");
+        this.printCola();
+        System.out.println("Ingrese orden ideal de ejecucion.\n");
+        for (int i = 0; i < n; i++) {
+            orden = rd.nextInt();
+            ideal.inQueue(orden);
+        }
+
+        while (this.getHead() != null) {
+            if (this.getHead().getValue() == ideal.getHead().getValue()) {
+                this.deQueue();
+                ideal.deQueue();
+                iteracion++;
+            } else {
+                this.inQueue(this.deQueue().getValue());
+                iteracion++;
+            }
+        }
+
+        System.out.println("Unidad/es de tiempo: " + iteracion);
+    }
 }
