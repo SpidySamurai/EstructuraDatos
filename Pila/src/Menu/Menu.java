@@ -18,7 +18,7 @@ public abstract class Menu {
         
         System.out.println("Menu");
         System.out.println("1.-Maximun Element.");
-        System.out.println("2.-");
+        System.out.println("2.-Equal Stacks");
         
         System.out.print("Escoga opcion: ");
         opc = rd.nextInt();

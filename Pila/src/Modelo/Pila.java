@@ -17,6 +17,7 @@ public class Pila {
     private Node tail;
     private int size;
     private int numNodes;
+    private int height;
 
     public Pila(int size) {
         this.head = null;
@@ -33,6 +34,10 @@ public class Pila {
         this.tail = tail;
     }
 
+    public int getHeight() {
+        return height;
+    }
+
     public void Push(Object entry) {
         if (this.size != this.numNodes) {
             Node aux = new Node(entry);
@@ -47,6 +52,7 @@ public class Pila {
             if (this.head == null) {
                 this.head = aux;
             }
+            this.height += (int) entry;
             this.numNodes++;
         } else {
             System.out.println("Overflow");
@@ -62,12 +68,14 @@ public class Pila {
                 this.tail = this.tail.getPrev();
                 this.tail.setNext(null);
                 this.numNodes--;
+                this.height -= (int) aux.getValue();
                 return aux.getValue();
             } else {
                 Node aux = this.tail;
                 this.setHead(null);
                 this.setTail(null);
                 this.numNodes--;
+                this.height -= (int) aux.getValue();
                 return aux.getValue();
             }
         } else {
@@ -99,7 +107,7 @@ public class Pila {
                 current = (int) temp.getValue();
                 if (max < current) {
                     max = (int) temp.getValue();
-                } 
+                }
                 temp = temp.getNext();
             }
             return max;
@@ -141,4 +149,27 @@ public class Pila {
 
     }
 
+    public static void equalStack(Pila a, Pila b, Pila c) {
+        int equalheight;
+
+        while (true) {
+            if(a.getHeight()==0 || b.getHeight()==0  || c.getHeight() == 0){
+                System.out.println(""+a.getHeight());
+                break;
+            }
+            if (a.getHeight() == b.getHeight() && b.getHeight() == c.getHeight()) {
+                System.out.println(""+a.getHeight());
+                break;
+            }
+             
+            if(a.getHeight() > b.getHeight() && a.getHeight() > c.getHeight())
+                a.Pop();
+            else if(b.getHeight() > a.getHeight() && b.getHeight() > c.getHeight())
+                b.Pop();
+            else if(c.getHeight() > b.getHeight() && c.getHeight() > a.getHeight())
+                c.Pop();
+        }
+        
+    }
+    
 }
