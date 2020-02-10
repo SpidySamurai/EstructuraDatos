@@ -5,6 +5,8 @@
  */
 package Modelo;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Javier
@@ -30,8 +32,6 @@ public class Pila {
     public void setTail(Node tail) {
         this.tail = tail;
     }
-    
-    
 
     public void Push(Object entry) {
         if (this.size != this.numNodes) {
@@ -55,7 +55,7 @@ public class Pila {
     }
 
     public Object Pop() {
-        
+
         if (this.numNodes != 0) {
             if (this.numNodes != 1) {
                 Node aux = this.tail;
@@ -80,14 +80,61 @@ public class Pila {
     public Object Peek() {
         return this.tail.getValue();
     }
-    
-    public void printPila(){
+
+    public void printPila() {
         Node temp = this.head;
-        while(temp != null){
-            System.out.println(" "+temp.getValue());
+        while (temp != null) {
+            System.out.println(" " + temp.getValue());
             temp = temp.getNext();
         }
-        
+
     }
-    
+
+    public Object max() {
+        if (this.numNodes != 0) {
+            Node temp = this.head;
+            Object max = 0;
+            while (temp != null) {
+                if (max.equals(temp.getValue())) {
+                    max = temp.getValue();
+                } 
+                temp = temp.getNext();
+            }
+            return max;
+        }
+
+        return null;
+    }
+
+    public void maximun() {
+        Scanner rd = new Scanner(System.in);
+        int opc;
+        int value;
+        System.out.print("Ingrese una opcion: ");
+        opc = rd.nextInt();
+        while (opc != 4) {
+            switch (opc) {
+                case 1:
+                    System.out.print("Ingresar un elemento a la pila: ");
+                    value = rd.nextInt();
+                    this.Push(value);
+                    break;
+                case 2:
+                    System.out.println("Eliminando un elemento de la pila.");
+                    this.Pop();
+                    break;
+                case 3:
+                    System.out.println("Elemento mas grande la pila: " + this.max());
+
+                    break;
+                default:
+                    System.out.println("Ingrese una opcion valida.");
+                    break;
+            }
+            System.out.print("Ingrese una opcion: ");
+            opc = rd.nextInt();
+        }
+
+    }
+
 }
