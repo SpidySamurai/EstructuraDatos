@@ -17,7 +17,7 @@ public abstract class Menu {
         int opc;
         
         System.out.println("Menu");
-        System.out.println("1.-");
+        System.out.println("1.-Maximun Element.");
         System.out.println("2.-");
         
         System.out.print("Escoga opcion: ");

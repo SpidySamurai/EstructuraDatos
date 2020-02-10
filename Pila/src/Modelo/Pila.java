@@ -93,14 +93,18 @@ public class Pila {
     public Object max() {
         if (this.numNodes != 0) {
             Node temp = this.head;
-            Object max = 0;
+            int max = 0;
+            int current;
             while (temp != null) {
-                if (max.equals(temp.getValue())) {
-                    max = temp.getValue();
+                current = (int) temp.getValue();
+                if (max < current) {
+                    max = (int) temp.getValue();
                 } 
                 temp = temp.getNext();
             }
             return max;
+        } else {
+            System.out.println("No hay elementos en la pila.");
         }
 
         return null;
