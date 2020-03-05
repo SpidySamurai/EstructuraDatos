@@ -21,43 +21,67 @@ public class Main {
      */
     public static void main(String[] args) {
         Random objGenerator = new Random();
-        
+
         SelectionSort listasordenSelect[] = new SelectionSort[10];
         InsertionSort listasinsertSelect[] = new InsertionSort[10];
-        
+
         SelectionSort ordenSeleccion = new SelectionSort(10000);
-        InsertionSort ordenInserccion = new InsertionSort(10000); 
-        
+        InsertionSort ordenInserccion = new InsertionSort(10000);
+
         System.out.print("CASO\t");
         System.out.print("SelectionSort\t");
         System.out.print("InsertionSort\t");
-        
-        for(int i = 0; i<listasordenSelect.length; i++){
+
+        for (int i = 0; i < listasordenSelect.length - 2; i++) {
             listasordenSelect[i] = new SelectionSort(10000);
-            listasinsertSelect[i] = new InsertionSort(10000); 
-            
-            for(int j = 0; j<10000; j++){
+            listasinsertSelect[i] = new InsertionSort(10000);
+
+            for (int j = 0; j < 10000; j++) {
                 int randomNumber = objGenerator.nextInt(10000);
                 listasordenSelect[i].insert(randomNumber);
                 listasinsertSelect[i].insert(randomNumber);
             }
-            
+
             System.out.print("\n");
-            System.out.print("CASO " + (i+1) + "\t");
-            
+            System.out.print("CASO " + (i + 1) + "\t");
+
             //Realiza orden por seleccion
             listasordenSelect[i].selectionSort();
             System.out.print("\t");
- 
+
             //Realiza orden por inserccion
-            listasinsertSelect[i].insertionSort();      
+            listasinsertSelect[i].insertionSort();
             System.out.println("\t");
-            
+
             UniquenessTesting test = new UniquenessTesting();
             test.testUniqueness(listasordenSelect[i].getA());
-            
+
+        }
+
+        for (int i = 8; i < listasordenSelect.length; i++) {
+            listasordenSelect[i] = new SelectionSort(10000);
+            listasinsertSelect[i] = new InsertionSort(10000);
+
+            for (int j = 0; j < 10000; j++) {
+                int randomNumber = objGenerator.nextInt(10000);
+                listasordenSelect[i].insert(j);
+                listasinsertSelect[i].insert((10000 - j));
+            }
+            System.out.print("\n");
+            System.out.print("CASO " + (i + 1) + "\t");
+
+            //Realiza orden por seleccion
+            listasordenSelect[i].selectionSort();
+            System.out.print("\t");
+
+            //Realiza orden por inserccion
+            listasinsertSelect[i].insertionSort();
+            System.out.println("\t");
+
+            UniquenessTesting test = new UniquenessTesting();
+            test.testUniqueness(listasordenSelect[i].getA());
         }
 
     }
-    
+
 }

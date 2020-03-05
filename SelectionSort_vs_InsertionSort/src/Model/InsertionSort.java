@@ -49,7 +49,7 @@ public class InsertionSort {
         
         long endTime = System.nanoTime();
         long TiempoEje = endTime - startTime;
-        System.out.print(TiempoEje + "ns ");
+        System.out.print(TiempoEje + " ns ");
     }
 
     private void swap(int one, int two) {
