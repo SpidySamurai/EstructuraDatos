@@ -18,6 +18,10 @@ public class SelectionSort {
         nElems = 0; 
     }
 
+    public long[] getA() {
+        return a;
+    }
+
     public void insert(long value) {
         a[nElems] = value;
         nElems++;
