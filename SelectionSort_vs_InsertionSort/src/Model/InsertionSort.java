@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ada6;
+package Model;
 
 /**
  *
  * @author A13003988
  */
-public class SelectionSort {
+public class InsertionSort {
     private long[] a; 
     private int nElems; 
 
-    public SelectionSort(int max) {
+    public InsertionSort(int max) {
         a = new long[max];
         nElems = 0; 
     }
@@ -29,22 +29,24 @@ public class SelectionSort {
         System.out.println(" ");
     }
 
-    public void selectionSort() {
+    public void insertionSort() {
         long startTime = System.nanoTime();
         
-        int out, in, min;
-        for(out=0; out<nElems-1; out++) {
-            min = out; 
-            for(in=out+1; in<nElems; in++)
-               if(a[in] < a[min] )
-                   min = in;
-                swap(out, min); 
+        int in, out;
+        for(out=1; out<nElems; out++) {
+            long temp = a[out];
+            in = out;
+            while(in>0 && a[in-1] >= temp) {
+                a[in] = a[in-1];
+                --in;
+            } 
+            a[in] = temp;
         }
         
         long endTime = System.nanoTime();
         long TiempoEje = endTime - startTime;
         System.out.print(TiempoEje + "ns ");
-    } 
+    }
 
     private void swap(int one, int two) {
         long temp = a[one];
@@ -52,4 +54,3 @@ public class SelectionSort {
         a[two] = temp;
     }
 } 
-

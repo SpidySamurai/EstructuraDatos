@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ada6;
+package Main;
 
+import Model.SelectionSort;
+import Model.InsertionSort;
 import java.util.Random;
 
 /**
