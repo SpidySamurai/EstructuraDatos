@@ -33,11 +33,11 @@ public class Graficador {
         final JFreeChart chart = ChartFactory.createXYLineChart("Tiempos ordenamiento", "No. Elementosbf", "Tiempo (ns)",
                 dataset,
                 PlotOrientation.VERTICAL,
-                true, 
-                false,   
-                false 
+                true,
+                false,
+                false
         );
-        
+
         chart.setBackgroundPaint(FondoGrafica);
 
         final XYPlot plot = (XYPlot) chart.getPlot();

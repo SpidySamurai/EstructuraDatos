@@ -5,6 +5,7 @@
  */
 package Main;
 
+import Model.DeletingDuplicates;
 import Model.Graficador;
 import Model.SelectionSort;
 import Model.InsertionSort;
@@ -69,6 +70,8 @@ public class Main {
 
             UniquenessTesting test = new UniquenessTesting();
             test.testUniqueness(listasordenSelect[i].getA());
+            DeletingDuplicates test1 = new DeletingDuplicates();
+            test1.testDeletingDuplicates(listasordenSelect[i].getA());
 
         }
 
@@ -94,8 +97,11 @@ public class Main {
 
             UniquenessTesting test = new UniquenessTesting();
             test.testUniqueness(listasordenSelect[i].getA());
+            DeletingDuplicates test1 = new DeletingDuplicates();
+            test1.testDeletingDuplicates(listasordenSelect[i].getA());
 
         }
+
         try {
             final Graficador prueba = new Graficador();
             XYSeriesCollection dataset = null;

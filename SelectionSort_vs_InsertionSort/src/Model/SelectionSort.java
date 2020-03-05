@@ -55,24 +55,18 @@ public class SelectionSort {
         long endTime = System.nanoTime();
         long TiempoEje = endTime - startTime;
 
-     
-        
         final XYSeries Time1 = new XYSeries("Selection Sort");
         Time1.add(TiempoEje, nElems);
         System.out.print(TiempoEje + "ns ");
         final XYSeriesCollection collection = new XYSeriesCollection();
 
         collection.addSeries(Time1);
-    } 
-
-       
-    
-
+    }
 
     private void swap(int one, int two) {
         long temp = a[one];
         a[one] = a[two];
         a[two] = temp;
     }
-    
+
 }

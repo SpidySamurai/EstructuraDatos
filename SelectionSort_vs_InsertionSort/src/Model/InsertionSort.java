@@ -20,8 +20,6 @@ public class InsertionSort {
     private long[] a;
     private int nElems;
 
- 
-
     public InsertionSort(int max) {
         a = new long[max];
         nElems = 0;
@@ -55,8 +53,6 @@ public class InsertionSort {
 
         long endTime = System.nanoTime();
         long TiempoEje = endTime - startTime;
-
-        
 
         final XYSeries Time2 = new XYSeries("Insertion Sort");
         Time2.add(TiempoEje, nElems);
