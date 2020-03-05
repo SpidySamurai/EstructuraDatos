@@ -5,9 +5,13 @@
  */
 package Main;
 
+import Model.Graficador;
 import Model.SelectionSort;
 import Model.InsertionSort;
+import java.io.File;
 import java.util.Random;
+import org.jfree.chart.ChartUtilities;
+import org.jfree.chart.JFreeChart;
 
 /**
  *
@@ -18,24 +22,29 @@ public class ADA6 {
     /**
      * @param args the command line arguments
      */
+    public static final int ANCHO_GRAFICA = 400;
+
+    public static final int ALTO_GRAFICA = 300;
+
     public static void main(String[] args) {
         Random objGenerator = new Random();
         
+
         SelectionSort listasordenSelect[] = new SelectionSort[10];
         InsertionSort listasinsertSelect[] = new InsertionSort[10];
-        
+
         SelectionSort ordenSeleccion = new SelectionSort(10000);
-        InsertionSort ordenInserccion = new InsertionSort(10000); 
-        
+        InsertionSort ordenInserccion = new InsertionSort(10000);
+
         System.out.print("CASO\t");
         System.out.print("SelectionSort\t");
         System.out.print("InsertionSort\t");
-        
-        for(int i = 0; i<listasordenSelect.length; i++){
+
+        for (int i = 0; i < listasordenSelect.length; i++) {
             listasordenSelect[i] = new SelectionSort(10000);
-            listasinsertSelect[i] = new InsertionSort(10000); 
-            
-            for(int j = 0; j<10000; j++){
+            listasinsertSelect[i] = new InsertionSort(10000);
+
+            for (int j = 0; j < 10000; j++) {
                 int randomNumber = objGenerator.nextInt(10000);
                 listasordenSelect[i].insert(randomNumber);
                 listasinsertSelect[i].insert(randomNumber);
@@ -43,17 +52,24 @@ public class ADA6 {
 
             System.out.print("\n");
             System.out.print("CASO " + i + "\t");
-            
+
             //Realiza orden por seleccion
             listasordenSelect[i].selectionSort();
             System.out.print("\t");
- 
+
             //Realiza orden por inserccion
-            listasinsertSelect[i].insertionSort();      
+            listasinsertSelect[i].insertionSort();
             System.out.println("\t");
-            
+
+        }
+        try {
+            final Graficador prueba = new Graficador();
+            final JFreeChart grafica = prueba.crearGrafica();
+            ChartUtilities.saveChartAsPNG(new File("tiempos-ordenamiento.png"), grafica, ANCHO_GRAFICA, ALTO_GRAFICA);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }
-    
+
 }

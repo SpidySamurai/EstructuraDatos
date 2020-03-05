@@ -5,17 +5,21 @@
  */
 package Model;
 
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
+
 /**
  *
  * @author A13003988
  */
 public class SelectionSort {
-    private long[] a; 
-    private int nElems; 
+
+    private long[] a;
+    private int nElems;
 
     public SelectionSort(int max) {
         a = new long[max];
-        nElems = 0; 
+        nElems = 0;
     }
 
     public void insert(long value) {
@@ -24,32 +28,40 @@ public class SelectionSort {
     }
 
     public void display() {
-        for(int j=0; j<nElems; j++) 
-            System.out.print(a[j] + "\n" ); 
+        for (int j = 0; j < nElems; j++) {
+            System.out.print(a[j] + "\n");
+        }
         System.out.println(" ");
     }
 
     public void selectionSort() {
         long startTime = System.nanoTime();
-        
+
         int out, in, min;
-        for(out=0; out<nElems-1; out++) {
-            min = out; 
-            for(in=out+1; in<nElems; in++)
-               if(a[in] < a[min] )
-                   min = in;
-                swap(out, min); 
+        for (out = 0; out < nElems - 1; out++) {
+            min = out;
+            for (in = out + 1; in < nElems; in++) {
+                if (a[in] < a[min]) {
+                    min = in;
+                }
+            }
+            swap(out, min);
         }
-        
+
         long endTime = System.nanoTime();
         long TiempoEje = endTime - startTime;
+        final XYSeries Time1 = new XYSeries("Selection Sort");
+        Time1.add(TiempoEje, nElems);
         System.out.print(TiempoEje + "ns ");
-    } 
+        final XYSeriesCollection collection = new XYSeriesCollection();
+
+        collection.addSeries(Time1);
+    }
 
     private void swap(int one, int two) {
         long temp = a[one];
         a[one] = a[two];
         a[two] = temp;
     }
-} 
-
+    
+}
