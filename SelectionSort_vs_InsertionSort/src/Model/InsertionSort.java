@@ -10,6 +10,10 @@ package Model;
  * @author A13003988
  */
 public class InsertionSort {
+
+    public long[] getA() {
+        return a;
+    }
     private long[] a; 
     private int nElems; 
 

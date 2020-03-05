@@ -7,6 +7,7 @@ package Main;
 
 import Model.SelectionSort;
 import Model.InsertionSort;
+import Model.UniquenessTesting;
 import java.util.Random;
 
 /**
@@ -40,7 +41,7 @@ public class ADA6 {
                 listasordenSelect[i].insert(randomNumber);
                 listasinsertSelect[i].insert(randomNumber);
             }
-
+            
             System.out.print("\n");
             System.out.print("CASO " + i + "\t");
             
@@ -51,6 +52,9 @@ public class ADA6 {
             //Realiza orden por inserccion
             listasinsertSelect[i].insertionSort();      
             System.out.println("\t");
+            
+            UniquenessTesting test = new UniquenessTesting();
+            test.testUniqueness(listasordenSelect[i].getA());
             
         }
 
