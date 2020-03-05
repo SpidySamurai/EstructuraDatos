@@ -10,8 +10,8 @@ import Model.SelectionSort;
 import Model.InsertionSort;
 import java.io.File;
 import java.util.Random;
-import org.jfree.chart.ChartUtilities;
-import org.jfree.chart.JFreeChart;
+//import org.jfree.chart.ChartUtilities;
+//import org.jfree.chart.JFreeChart;
 
 /**
  *
@@ -64,8 +64,8 @@ public class ADA6 {
         }
         try {
             final Graficador prueba = new Graficador();
-            final JFreeChart grafica = prueba.crearGrafica();
-            ChartUtilities.saveChartAsPNG(new File("tiempos-ordenamiento.png"), grafica, ANCHO_GRAFICA, ALTO_GRAFICA);
+//            final JFreeChart grafica = prueba.crearGrafica();
+//            ChartUtilities.saveChartAsPNG(new File("tiempos-ordenamiento.png"), grafica, ANCHO_GRAFICA, ALTO_GRAFICA);
         } catch (Exception e) {
             e.printStackTrace();
         }
