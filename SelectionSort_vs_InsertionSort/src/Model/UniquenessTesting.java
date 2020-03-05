@@ -10,17 +10,23 @@ package Model;
  * @author Jose Manuel Patron
  */
 public class UniquenessTesting {
-    
-    public void testUniqueness(long[] lista){
+
+    public void testUniqueness(long[] lista) {
         long num;
-        for(int i=0; i< lista.length-1; i++){
-            if(lista[i] == lista[i+1]){
-                num= lista[i];
-                System.out.println("La lista contiene elementos iguales en la posicion " + i +" y  " + i + " el numero es " + num);
+        boolean flag = true;
+        for (int i = 0; i < lista.length - 1; i++) {
+            if (lista[i] == lista[i + 1]) {
+                num = lista[i];
+                System.out.println("La lista contiene elementos iguales en la posicion " + i + " y  " + (i + 1) + " el numero es " + num);
+
+                flag = false;
+                break;
             }
         }
-        System.out.println("La lista contiene unicamente elementos unicos");
-    
+        if (flag) {
+            System.out.println("La lista contiene unicamente elementos unicos");
+        }
+
     }
-    
+
 }
