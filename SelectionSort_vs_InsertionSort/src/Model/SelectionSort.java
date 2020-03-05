@@ -69,4 +69,8 @@ public class SelectionSort {
         a[two] = temp;
     }
 
+    public void setA(int j,int parametro) {
+        this.a[j] = parametro;
+    }
+
 }

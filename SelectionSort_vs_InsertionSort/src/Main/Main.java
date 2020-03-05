@@ -38,20 +38,21 @@ public class Main {
         SelectionSort listasordenSelect[] = new SelectionSort[10];
         InsertionSort listasinsertSelect[] = new InsertionSort[10];
 
-        SelectionSort ordenSeleccion = new SelectionSort(10000);
-        InsertionSort ordenInserccion = new InsertionSort(10000);
-
+//        SelectionSort ordenSeleccion = new SelectionSort(10000);
+//        InsertionSort ordenInserccion = new InsertionSort(10000);
         System.out.print("CASO\t");
         System.out.print("SelectionSort\t");
         System.out.print("InsertionSort\t");
 
         for (int i = 0; i < listasordenSelect.length - 2; i++) {
 
-            listasordenSelect[i] = new SelectionSort(10000);
-            listasinsertSelect[i] = new InsertionSort(10000);
+            listasordenSelect[i] = new SelectionSort(100);
+            listasinsertSelect[i] = new InsertionSort(100);
 
-            for (int j = 0; j < 10000; j++) {
-                int randomNumber = objGenerator.nextInt(10000);
+            for (int j = 0; j < 100; j++) {
+              double random =  Math.random()*1 + 1;
+              int randomNumber = (int) random;
+//               randomNumber = randomNumber + 1;
                 listasordenSelect[i].insert(randomNumber);
                 listasinsertSelect[i].insert(randomNumber);
             }
@@ -70,6 +71,7 @@ public class Main {
 
             UniquenessTesting test = new UniquenessTesting();
             test.testUniqueness(listasordenSelect[i].getA());
+
             DeletingDuplicates test1 = new DeletingDuplicates();
             test1.testDeletingDuplicates(listasordenSelect[i].getA());
 
@@ -81,6 +83,7 @@ public class Main {
 
             for (int j = 0; j < 10000; j++) {
                 int randomNumber = objGenerator.nextInt(10000);
+                randomNumber = randomNumber+1;
                 listasordenSelect[i].insert(j);
                 listasinsertSelect[i].insert((10000 - j));
             }

@@ -16,14 +16,19 @@ public class DeletingDuplicates {
         long counter = 0;
         int j;
         for (int i = 0; i < lista.length - 1; i++) {
-            if (lista[i] == lista[i + 1]) {
-                j = i;
-                while (lista[i] == lista[j + 1]) {
 
-                    lista[j + 1] = 0;
+            if (lista[i] == lista[i + 1]) {
+                j = i + 1;
+                while (lista[i] == lista[j] ) {
+
+                    System.out.println(i + " " + j);
+                    lista[j] = 0;
                     counter++;
-                    j++;
+                    if (j + 1 < lista.length) {
+                        j++;
+                    }
                 }
+                i = j;
             }
         }
         System.out.println("Elementos repetido eliminados " + counter);
