@@ -12,6 +12,7 @@ import java.io.File;
 import java.util.Random;
 import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
+import org.jfree.data.xy.XYSeriesCollection;
 
 /**
  *
@@ -64,7 +65,8 @@ public class ADA6 {
         }
         try {
             final Graficador prueba = new Graficador();
-            final JFreeChart grafica = prueba.crearGrafica();
+            XYSeriesCollection dataset = null;
+            final JFreeChart grafica = prueba.crearGrafica(dataset);
             ChartUtilities.saveChartAsPNG(new File("tiempos-ordenamiento.png"), grafica, ANCHO_GRAFICA, ALTO_GRAFICA);
         } catch (Exception e) {
             e.printStackTrace();

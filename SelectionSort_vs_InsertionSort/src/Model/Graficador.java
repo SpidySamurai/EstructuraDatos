@@ -30,7 +30,7 @@ public class Graficador {
     private static Color FondoGrafica = Color.white;
 
     public JFreeChart crearGrafica(XYSeriesCollection dataset) {
-        final JFreeChart chart = ChartFactory.createXYLineChart("Tiempos ordenamiento", "No. Elementosbf", "Tiempo (segundos)",
+        final JFreeChart chart = ChartFactory.createXYLineChart("Tiempos ordenamiento", "No. Elementosbf", "Tiempo (ns)",
                 dataset,
                 PlotOrientation.VERTICAL,
                 true, 
