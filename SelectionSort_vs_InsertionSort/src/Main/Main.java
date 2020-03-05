@@ -14,7 +14,7 @@ import java.util.Random;
  *
  * @author Juan D.M
  */
-public class ADA6 {
+public class Main {
 
     /**
      * @param args the command line arguments
@@ -43,7 +43,7 @@ public class ADA6 {
             }
             
             System.out.print("\n");
-            System.out.print("CASO " + i + "\t");
+            System.out.print("CASO " + (i+1) + "\t");
             
             //Realiza orden por seleccion
             listasordenSelect[i].selectionSort();
