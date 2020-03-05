@@ -55,7 +55,7 @@ public class SelectionSort {
         long endTime = System.nanoTime();
         long TiempoEje = endTime - startTime;
 
-        System.out.print(TiempoEje + " ns ");
+     
         
         final XYSeries Time1 = new XYSeries("Selection Sort");
         Time1.add(TiempoEje, nElems);

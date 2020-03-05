@@ -56,7 +56,7 @@ public class InsertionSort {
         long endTime = System.nanoTime();
         long TiempoEje = endTime - startTime;
 
-        System.out.print(TiempoEje + " ns ");
+        
 
         final XYSeries Time2 = new XYSeries("Insertion Sort");
         Time2.add(TiempoEje, nElems);
