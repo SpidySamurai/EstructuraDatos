@@ -37,9 +37,11 @@ public class InsertionSort {
         System.out.println(" ");
     }
 
-    public void insertionSort() {
+    public XYSeries insertionSort() {
         long startTime = System.nanoTime();
-
+        long startTimeG = System.nanoTime();
+//        final XYSeriesCollection collection = new XYSeriesCollection();
+        final XYSeries Time2 = new XYSeries("Insertion Sort");
         int in, out;
         for (out = 1; out < nElems; out++) {
             long temp = a[out];
@@ -49,17 +51,16 @@ public class InsertionSort {
                 --in;
             }
             a[in] = temp;
+            long endTimeG = System.nanoTime();
+            long TiempoEjeG = endTimeG - startTimeG;
+            Time2.add(nElems, TiempoEjeG);
+//            collection.addSeries(Time2);
         }
 
         long endTime = System.nanoTime();
         long TiempoEje = endTime - startTime;
-
-        final XYSeries Time2 = new XYSeries("Insertion Sort");
-        Time2.add(TiempoEje, nElems);
         System.out.print(TiempoEje + "ns ");
-        final XYSeriesCollection collection = new XYSeriesCollection();
-        collection.addSeries(Time2);
-
+        return Time2;
     }
 
     private void swap(int one, int two) {

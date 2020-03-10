@@ -30,7 +30,7 @@ public class Graficador {
     private static Color FondoGrafica = Color.white;
 
     public JFreeChart crearGrafica(XYSeriesCollection dataset) {
-        final JFreeChart chart = ChartFactory.createXYLineChart("Tiempos ordenamiento", "No. Elementosbf", "Tiempo (ns)",
+        final JFreeChart chart = ChartFactory.createXYLineChart("Tiempos ordenamiento", "No. Elementos", "Tiempo (ns)",
                 dataset,
                 PlotOrientation.VERTICAL,
                 true,
@@ -62,13 +62,14 @@ public class Graficador {
 
     private void configurarEjeX(NumberAxis domainAxis) {
         domainAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
-        domainAxis.setTickUnit(new NumberTickUnit(100));
+        domainAxis.setTickUnit(new NumberTickUnit(500));
+        domainAxis.setRange(0, 10000);
     }
 
     private void configurarEjeY(NumberAxis rangeAxis) {
         rangeAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
-        rangeAxis.setTickUnit(new NumberTickUnit(50));
-        rangeAxis.setRange(0, 999);
+        rangeAxis.setTickUnit(new NumberTickUnit(50000000));
+        rangeAxis.setRange(0, 1000000000);
     }
 
     private void configurarRendered(XYLineAndShapeRenderer renderer) {

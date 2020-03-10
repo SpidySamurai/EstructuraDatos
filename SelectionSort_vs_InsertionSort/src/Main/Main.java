@@ -13,6 +13,8 @@ import Model.InsertionSort;
 import Model.UniquenessTesting;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import java.util.Random;
 import org.jfree.chart.ChartUtilities;
@@ -28,62 +30,65 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    public static final int ANCHO_GRAFICA = 400;
-
-    public static final int ALTO_GRAFICA = 300;
-
+    public static final int ANCHO_GRAFICA = 1500;
+    
+    public static final int ALTO_GRAFICA = 600;
+    
     public static void main(String[] args) {
         Random objGenerator = new Random();
-
+        final XYSeriesCollection collection = new XYSeriesCollection();
+        final Graficador prueba = new Graficador();
         SelectionSort listasordenSelect[] = new SelectionSort[10];
         InsertionSort listasinsertSelect[] = new InsertionSort[10];
-
+//        ArrayList<XYSeriesCollection> listTime = new ArrayList<XYSeriesCollection>();
 //        SelectionSort ordenSeleccion = new SelectionSort(10000);
 //        InsertionSort ordenInserccion = new InsertionSort(10000);
         System.out.print("CASO\t");
         System.out.print("SelectionSort\t");
         System.out.print("InsertionSort\t");
-
+        
         for (int i = 0; i < listasordenSelect.length - 2; i++) {
-
+            
             listasordenSelect[i] = new SelectionSort(100);
             listasinsertSelect[i] = new InsertionSort(100);
-
+            
             for (int j = 0; j < 100; j++) {
-              double random =  Math.random()*1 + 1;
-              int randomNumber = (int) random;
+                double random = Math.random() * 10000 + 1;
+                int randomNumber = (int) random;
 //               randomNumber = randomNumber + 1;
                 listasordenSelect[i].insert(randomNumber);
                 listasinsertSelect[i].insert(randomNumber);
             }
-
+            
             System.out.print("\n");
-
+            
             System.out.print("CASO " + (i + 1) + "\t");
 
             //Realiza orden por seleccion
             listasordenSelect[i].selectionSort();
+//            collection.addSeries(listasordenSelect[i].selectionSort());
             System.out.print("\t");
 
             //Realiza orden por inserccion
             listasinsertSelect[i].insertionSort();
+//            collection.addSeries(listasinsertSelect[i].insertionSort());
             System.out.println("\t");
-
+            
             UniquenessTesting test = new UniquenessTesting();
             test.testUniqueness(listasordenSelect[i].getA());
-
+            
             DeletingDuplicates test1 = new DeletingDuplicates();
             test1.testDeletingDuplicates(listasordenSelect[i].getA());
-
+            
         }
-
+        
         for (int i = 8; i < listasordenSelect.length; i++) {
             listasordenSelect[i] = new SelectionSort(10000);
             listasinsertSelect[i] = new InsertionSort(10000);
-
+            
             for (int j = 0; j < 10000; j++) {
                 int randomNumber = objGenerator.nextInt(10000);
-                randomNumber = randomNumber+1;
+                randomNumber = randomNumber + 1;
                 listasordenSelect[i].insert(j);
                 listasinsertSelect[i].insert((10000 - j));
             }
@@ -92,29 +97,33 @@ public class Main {
 
             //Realiza orden por seleccion
             listasordenSelect[i].selectionSort();
+//            collection.addSeries(listasordenSelect[i].selectionSort());
+            
             System.out.print("\t");
 
             //Realiza orden por inserccion
             listasinsertSelect[i].insertionSort();
+//            collection.addSeries(listasinsertSelect[i].insertionSort());
             System.out.println("\t");
-
+            
             UniquenessTesting test = new UniquenessTesting();
             test.testUniqueness(listasordenSelect[i].getA());
             DeletingDuplicates test1 = new DeletingDuplicates();
             test1.testDeletingDuplicates(listasordenSelect[i].getA());
-
+            
         }
-
+        
         try {
-            final Graficador prueba = new Graficador();
-            XYSeriesCollection dataset = null;
+            collection.addSeries(listasordenSelect[0].selectionSort());
+            collection.addSeries(listasinsertSelect[0].insertionSort());
+            XYSeriesCollection dataset = collection;
             final JFreeChart grafica = prueba.crearGrafica(dataset);
             ChartUtilities.saveChartAsPNG(new File("tiempos-ordenamiento.png"), grafica, ANCHO_GRAFICA, ALTO_GRAFICA);
         } catch (Exception e) {
             e.printStackTrace();
-
+            
         }
-
+        
     }
-
+    
 }

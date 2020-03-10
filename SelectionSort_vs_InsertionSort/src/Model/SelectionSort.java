@@ -38,9 +38,11 @@ public class SelectionSort {
         System.out.println(" ");
     }
 
-    public void selectionSort() {
+    public XYSeries selectionSort() {
         long startTime = System.nanoTime();
-
+        long startTimeG = System.nanoTime();
+        final XYSeries Time1 = new XYSeries("Selection Sort");
+//        final XYSeriesCollection collection = new XYSeriesCollection();
         int out, in, min;
         for (out = 0; out < nElems - 1; out++) {
             min = out;
@@ -48,19 +50,21 @@ public class SelectionSort {
                 if (a[in] < a[min]) {
                     min = in;
                 }
+
             }
             swap(out, min);
+            long endTimeG = System.nanoTime();
+            long TiempoEjeG = endTimeG - startTimeG;
+            Time1.add(nElems, TiempoEjeG);
+//            collection.addSeries(Time1);
+
         }
 
         long endTime = System.nanoTime();
         long TiempoEje = endTime - startTime;
-
-        final XYSeries Time1 = new XYSeries("Selection Sort");
-        Time1.add(TiempoEje, nElems);
         System.out.print(TiempoEje + "ns ");
-        final XYSeriesCollection collection = new XYSeriesCollection();
-
-        collection.addSeries(Time1);
+        
+        return Time1;
     }
 
     private void swap(int one, int two) {
@@ -69,8 +73,31 @@ public class SelectionSort {
         a[two] = temp;
     }
 
-    public void setA(int j,int parametro) {
+    public void setA(int j, int parametro) {
         this.a[j] = parametro;
     }
 
+//        public void GraficaSelection() {
+//        long startTime = System.nanoTime();
+//        final XYSeries Time1 = new XYSeries("Selection Sort");
+//
+//        int out, in, min;
+//        for (out = 0; out < nElems - 1; out++) {
+//            min = out;
+//            for (in = out + 1; in < nElems; in++) {
+//
+//                    Time1.add(TiempoEje, nElems);
+//                    System.out.print(TiempoEje + "ns ");
+//                    final XYSeriesCollection collection = new XYSeriesCollection();
+//
+//                    collection.addSeries(Time1);
+//                
+//            }
+//
+//        }
+//
+//        long endTime = System.nanoTime();
+//        long TiempoEje = endTime - startTime;
+//
+//    }
 }
