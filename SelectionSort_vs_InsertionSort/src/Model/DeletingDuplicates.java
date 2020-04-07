@@ -19,7 +19,7 @@ public class DeletingDuplicates {
 
             if (lista[i] == lista[i + 1]) {
                 j = i + 1;
-                while (lista[i] == lista[j] ) {
+                while (lista[i] == lista[j]) {
 
                     System.out.println(i + " " + j);
                     lista[j] = 0;
