@@ -7,7 +7,7 @@ Codigo realizado por el alumno Javier Fernando Chi Ortiz
 
 */
 
-public class Main {
+public class Busqueda_Binaria {
 
     public static void main(String[] args) {
         Scanner rd = new Scanner(System.in);
