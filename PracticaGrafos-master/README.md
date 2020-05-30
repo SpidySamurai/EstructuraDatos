@@ -1,2 +1,0 @@
-# PracticaGrafos
-Practica de grafos
